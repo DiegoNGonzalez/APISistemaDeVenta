@@ -19,7 +19,7 @@ public partial class Producto
 
     public DateTime? FechaRegistro { get; set; }
 
-    public virtual ICollection<DetalleVentum> DetalleVenta { get; } = new List<DetalleVentum>();
+    public virtual ICollection<DetalleVenta> DetalleVenta { get; } = new List<DetalleVenta>();
 
     public virtual Categoria? IdCategoriaNavigation { get; set; }
 }

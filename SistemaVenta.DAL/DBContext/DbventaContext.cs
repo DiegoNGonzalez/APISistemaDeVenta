@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using SistemaVenta.Model;
 
-namespace SistemaVenta.Model;
+namespace SistemaVenta.DAL.DBContext;
 
 public partial class DbventaContext : DbContext
 {
@@ -17,7 +18,7 @@ public partial class DbventaContext : DbContext
 
     public virtual DbSet<Categoria> Categoria { get; set; }
 
-    public virtual DbSet<DetalleVentum> DetalleVenta { get; set; }
+    public virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
 
     public virtual DbSet<Menu> Menus { get; set; }
 
@@ -33,9 +34,7 @@ public partial class DbventaContext : DbContext
 
     public virtual DbSet<Venta> Venta { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DIEGONZALEZDEV\\SQLEXPRESS; DataBase=DBVENTA; Trusted_Connection=True; TrustServerCertificate=True;Encrypt=False;");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -57,7 +56,7 @@ public partial class DbventaContext : DbContext
                 .HasColumnName("nombre");
         });
 
-        modelBuilder.Entity<DetalleVentum>(entity =>
+        modelBuilder.Entity<DetalleVenta>(entity =>
         {
             entity.HasKey(e => e.IdDetalleVenta).HasName("PK__DetalleV__BFE2843F0930FFA5");
 
