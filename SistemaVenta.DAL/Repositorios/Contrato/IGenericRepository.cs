@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace SistemaVenta.DAL.Repositorios.Contrato
 {
-    public interface IGenericRepositorio<TModel> where TModel : class
+    public interface IGenericRepository<TModel> where TModel : class
     {
         Task<TModel> Obtener(Expression<Func<TModel,bool>> filtro);
         Task<TModel> Crear(TModel modelo);
